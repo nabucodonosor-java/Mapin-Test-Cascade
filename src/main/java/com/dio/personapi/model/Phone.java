@@ -1,5 +1,6 @@
 package com.dio.personapi.model;
 
+import com.dio.personapi.dto.PhoneDto;
 import com.dio.personapi.model.enums.PhoneType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,6 +27,12 @@ public class Phone implements Serializable {
     private PhoneType type;
     @Column(nullable = false)
     private String number;
+
+    public Phone(PhoneDto dto) {
+        idPhone = dto.getIdPhone();
+        type = dto.getType();
+        number = dto.getNumber();
+    }
 
     @Override
     public boolean equals(Object o) {

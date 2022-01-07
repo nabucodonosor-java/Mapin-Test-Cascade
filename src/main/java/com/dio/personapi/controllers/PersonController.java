@@ -21,10 +21,10 @@ public class PersonController {
     private PersonService service;
 
     @PostMapping
-    public ResponseEntity<Person> insert(@RequestBody Person entity) {
-        entity = service.insert(entity);
+    public ResponseEntity<PersonDto> insert(@RequestBody PersonDto dto) {
+        dto = service.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").
-                buildAndExpand(entity.getIdPerson()).toUri();
-        return ResponseEntity.created(uri).body(entity);
+                buildAndExpand(dto.getIdPerson()).toUri();
+        return ResponseEntity.created(uri).body(dto);
     }
 }
